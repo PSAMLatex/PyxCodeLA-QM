@@ -1,0 +1,142 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex	\
+								
+\usepackage{datetime2}	
+\DTMsetdatestyle{mdyy}
+\DTMsetup{datesep=/}
+								
+\usepackage{amssymb, amsmath}
+
+%SetFonts
+\usepackage[sc,slantedGreek]{mathpazo}
+
+%SetFonts
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{PSAM Week One Solution to Lay 1.7.9 by Pyxie Star | Page \thepage}
+\lhead{\today}
+\renewcommand{\headrulewidth}{1pt}
+
+\begin{document}
+
+\paragraph*{\textbf{1.7.9 (a) For what values of $h$ is $\vec{v_3}$ in Span $\{\vec{v_1},\vec{v_2}\}$, and (b) for what values of $h$ is $\{\vec{v_1},\vec{v_2},\vec{v_3}\}$ linearly \emph{dependent}?
+Justify each answer.}}
+\[ \vec{v_1}= \left[ \begin{array}{r}
+1\\
+-3\\
+2\end{array}\right ] , 
+ \vec{v_2}= \left[ \begin{array}{r}
+-3\\
+9\\
+-6\end{array}\right ] ,
+\vec{v_3}= \left[ \begin{array}{r}
+5\\
+-7\\
+h\end{array}\right ] \]
+
+\paragraph{a)} $\vec{v_2}$ is a scalar multiple of $\vec{v_1}$. Specifically, 
+\begin{equation}
+\vec{v_2}=-3\vec{v_1}
+\end{equation}
+
+This means that Span $\{\vec{v_1},\vec{v_2}\}$ is the set of all vectors that lie on the line that goes through $\vec{v_1}$ (and $\vec{v_2}$) and $\vec{0}$. 
+
+\begin{center}
+\includegraphics[width=80mm]{Span.jpg}
+\end{center}
+
+All of the vectors in Span $\{\vec{v_1},\vec{v_2}\}$ must be parallel to $\vec{v_1}$ so that they lie on that line. So to have $\vec{v_3}$ in Span $\{\vec{v_1},\vec{v_2}\}$, we need
+\begin{equation}\label{da}
+\vec{v_3}=c_1\vec{v_1}
+\end{equation}
+where $c_1$ is some constant.
+
+This gives three equalities:
+\begin{align}
+5&=c_1 (1)\label{1}\\
+-7&=c_1(-3)\label{2}\\
+h&=c_1(2)\label{3}
+\end{align}
+Solving Eq\eqref{1} for $c_1$ gives
+\begin{equation}
+c_1=5
+\end{equation}
+But substituting this value into Eq\eqref{2} gives
+\begin{equation}
+-3(5)=-7
+\end{equation}
+which is simply not true.
+
+This can also be shown by turning Eq\eqref{da} into the augmented matrix $[\vec{v_1}  \,\,\vec{v_3}]$ and looking for solutions.
+
+\[  \left[ \begin{array}{rr}
+1&5\\
+-3&-7\\
+2&h\end{array}\right ]\rightarrow
+\left[ \begin{array}{rr}
+1&5\\
+0&8\\
+2&h\end{array}\right ]\]
+
+\begin{equation}
+0\neq8
+\end{equation}
+
+The system is inconsistent regardless of the value of $h$, so there are $\boxed{\textrm{no values of } h}$ that make $\vec{v_3}$ in Span $\{\vec{v_1},\vec{v_2}\}$.
+
+\paragraph{b)} $\{\vec{v_1},\vec{v_2},\vec{v_3}\}$ is linearly dependent if the equation
+\begin{equation}\label{6}
+c_1\vec{v_1}+c_2\vec{v_2}+c_3\vec{v_3}=\vec{0}
+\end{equation}
+ does not have only the trivial solution. That is, there must be $c_1, \,c_2,\,c_3$ not all zero that satisfy Eq\eqref{6}. 
+
+As stated previously, we know that  
+\begin{equation}
+\vec{v_2}=-3\vec{v_1}
+\end{equation}
+
+Choosing 
+\begin{align}
+c_1&=-3\\
+c_2&=-1\\
+c_3&=0
+\end{align}
+
+and substituting into Eq\eqref{6} gives
+\begin{equation}
+\begin{split}
+-3\vec{v_1}-\vec{v_2}+0(\vec{v_3})&=-3\vec{v_1}-\vec{v_2}\\
+&=\vec{v_2}-\vec{v_2}\\
+&=\vec{0}
+\end{split}
+\end{equation}
+
+Thus there does exist $c_1, \,c_2,\,c_3$ not all zero that satisfy Eq\eqref{6}. This is true regardless of the value of $h$.
+
+This can also be shown by checking the matrix$[\vec{v_1}\,\,\vec{v_2}\,\,\vec{v_3}\,\,\vec{0}]$ for solutions other than the trivial solution.
+
+\[  \left[ \begin{array}{rrrr}
+1&-3&5&0\\
+-3&9&-7&0\\
+2&-6&h&0\end{array}\right ]\rightarrow
+\left[ \begin{array}{rrrr}
+1&-3&5&0\\
+0&0&8&0\\
+2&-6&h&0\end{array}\right ]\rightarrow
+\left[ \begin{array}{rrcr}
+1&-3&5&0\\
+0&0&8&0\\
+0&0&h-10&0\end{array}\right ]\]
+
+At this point we can see that the system is consistent (because there is no pivot position in the rightmost column) and that $x_2$ is free (because there is no pivot position in the second column), so there are infinitely many solutions regardless of the value of $h$.
+
+
+So $\{\vec{v_1},\vec{v_2},\vec{v_3}\}$ is linearly dependent for $\boxed{\textrm{all values of }h}$.
+
+\end{document}  
