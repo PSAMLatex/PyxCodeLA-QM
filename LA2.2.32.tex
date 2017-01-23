@@ -1,0 +1,57 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[headheight=15pt]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb, amsmath}
+
+\usepackage{datetime2}	
+\DTMsetdatestyle{mdyy}
+\DTMsetup{datesep=/}
+
+%SetFonts
+\usepackage[sc,slantedGreek]{mathpazo}
+%SetFonts
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{PSAM Week One Solution to Lay 2.2.32 by Pyxie Star | Page \thepage}
+\lhead{\today}
+\renewcommand{\headrulewidth}{1pt}
+
+\begin{document}
+
+\paragraph*{\textbf{2.2.32}}
+\[   \left[ \begin{array}{rrr}
+1&-2&1\\
+4&-7&3\\
+-2&6&-4\end{array}\right ] \textbf{Find the inverse of the matrix, if it exists.}\]
+
+\paragraph{}
+Let $A$ be the matrix to invert. If $A$ is invertible then $[A \,\,I]$ will row reduce to $[I\,\,A^{-1}]$.
+
+\[ \left[ \begin{array}{rrrrrrr}
+1&-2&1&\,\,\,\,1&\,\,\,\,0&\,\,\,\,0\\
+4&-7&3&0&1&0\\
+-2&6&-4&0&0&1\end{array}\right ]\sim
+\left[ \begin{array}{rrrrrrr}
+1&-2&1&1&\,\,\,\,0&\,\,\,\,0\\
+0&1&-1&-4&1&0\\
+-2&6&-4&0&0&1\end{array}\right ] \]
+
+\[\sim\left[ \begin{array}{rrrrrrr}
+1&-2&1&1&\,\,\,\,0&\,\,\,\,0\\
+0&1&-1&-4&1&0\\
+0&2&-2&2&0&1\end{array}\right ]\sim
+\left[ \begin{array}{rrrrrrr}
+1&-2&1&1&0&\,\,\,\,0\\
+0&1&-1&-4&1&0\\
+0&0&0&10&-2&1\end{array}\right ] \]
+
+\paragraph{}At this point is it evident that $A$ has only 2 pivot positions. In order to be invertible, $A$ must have 3 pivot positions. Thus $\boxed{A\textrm{ is not invertible}}$.
+
+\end{document}
+
+

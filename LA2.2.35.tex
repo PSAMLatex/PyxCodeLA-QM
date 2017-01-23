@@ -1,0 +1,82 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[headheight=15pt]{geometry}  % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb, amsmath}
+
+\usepackage{datetime2}	
+\DTMsetdatestyle{mdyy}
+\DTMsetup{datesep=/}
+
+%SetFonts
+\usepackage[sc,slantedGreek]{mathpazo}
+%SetFonts
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{PSAM Week One Solution to Lay 2.2.35 by Pyxie Star | Page \thepage}
+\lhead{\today}
+\renewcommand{\headrulewidth}{1pt}
+
+\begin{document}
+
+\paragraph*{\textbf{2.2.35}}
+\[   \textbf{Let $A$=}\left[ \begin{array}{rrr}
+-2&-7&-9\\
+2&5&6\\
+1&3&4\end{array}\right ]\]
+\begin{center}
+\textbf{Find the third column of $A^{-1}$ without computing the other columns.}
+\end{center}
+
+\paragraph{}
+The third column of $A^{-1}$ is the solution to the equation $A\vec{x}=\vec{e_3}$ where $\vec{e_3}$ is the third column of the corresponding identity matrix. Thus we can find the third column of $A^{-1}$ by solving the augmented matrix $[A\,\,\vec{e_3}]$.
+
+\[  \left[ \begin{array}{rrrr}
+-2&-7&-9&\,\,\,\,0\\
+2&5&6&0\\
+1&3&4&1\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&3&4&\,\,\,\,1\\
+2&5&6&0\\
+-2&-7&-9&0\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&3&4&\,\,\,\,1\\
+0&-1&-2&-2\\
+-2&-7&-9&0\end{array}\right ]\]
+
+\[\sim\left[ \begin{array}{rrrr}
+1&3&4&\,\,\,\,1\\
+0&-1&-2&-2\\
+0&-1&-1&2\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&3&4&\,\,\,\,1\\
+0&1&2&2\\
+0&-1&-1&2\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&\,\,\,\,3&\,\,\,\,4&\,\,\,\,1\\
+0&1&2&2\\
+0&0&1&4\end{array}\right ]\]
+
+\[\sim\left[ \begin{array}{rrrr}
+1&\,\,\,\,3&\,\,\,\,4&\,\,\,\,1\\
+0&1&0&-6\\
+0&0&1&4\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&\,\,\,\,3&\,\,\,\,0&-15\\
+0&1&0&-6\\
+0&0&1&4\end{array}\right ]\sim
+\left[ \begin{array}{rrrr}
+1&\,\,\,\,0&\,\,\,\,0&\,\,\,\,3\\
+0&1&0&-6\\
+0&0&1&4\end{array}\right ]\]
+\begin{center}
+So the third column of $A^{-1}$ is $\boxed{ \left[\begin{array}{r}
+3\\
+-6\\
+4\end{array}\right]}$
+\end{center}
+\end{document}
